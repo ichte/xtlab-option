@@ -1,16 +1,7 @@
 {
     "name": "ichte/xtlab-option",
     "description": "Options",
-    "authors": [
-        {
-            "name": "XTLAB",
-            "email": "xtl@xuanthulab.net"
-        }
-    ],
-    "prefer-stable": true,
-    "require": { 
-		"php": "^5.5 || ^7.0" 
-		},
+    "require": { },
 	"autoload": {
         "psr-4": {
             "XT\\Option\\": "src/"
