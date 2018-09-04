@@ -1,24 +1,19 @@
 {
     "name": "ichte/xtlab-option",
-    "description": "DB",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "xtlab-option"
-    ],
-    "require": {
-        "php": "^5.5 || ^7.0"
-    },
+    "description": "Options",
     "authors": [
         {
-            "name": "Xuan Thu",
-            "role": "Developer"
+            "name": "XTLAB",
+            "email": "xtl@xuanthulab.net"
         }
     ],
-
-    "autoload": {
+    "minimum-stability": "dev",
+    "require": { 
+		"php": "^5.5 || ^7.0" 
+		},
+	"autoload": {
         "psr-4": {
             "XT\\Option\\": "src/"
         }
     }
-
 }
