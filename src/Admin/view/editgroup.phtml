@@ -1,0 +1,42 @@
+<?php
+/***
+ * @var $this PhpRenderer
+ * @var $form \XT\Option\Form\GroupoptionForm
+ */
+$this->headTitle($this->translate('Update option group'));
+?>
+<?php
+echo $this->pageBreadcrumbs()->setItems(
+    [
+        'Administrator' => $this->url('admin'),
+        'Options' => $this->url('admin', ['plugin' => 'options']),
+        'Add' => 'Add'
+    ]
+)->render();
+
+?>
+<div class="p-4">
+    <h1><?= $this->translate('Update option group') ?></h1>
+    <?
+    $form->setAttribute('class', 'form');
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    ?>
+    <fieldset class="form-group">
+        <label><?= $this->translate('Name') ?></label>
+        <?= $this->formRow($form->get('name')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <label><?= $this->translate('Description') ?></label>
+        <?= $this->formRow($form->get('description')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <?= $this->formSubmit($form->get('submit')) ?>
+        <input type="submit" name="submit" style="margin-left: 10px;" id="submitbutton" class="btn btn-danger"
+               value="Delete">
+    </fieldset>
+
+    <?= $this->formhidden($form->get($form->getNameCsrf())) ?>
+
+    <?= $this->form()->closeTag() ?>
+</div> 

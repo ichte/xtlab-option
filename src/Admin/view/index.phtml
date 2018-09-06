@@ -1,0 +1,116 @@
+<?
+/**
+ * @var $this PhpRenderer
+ * @var $gr \XT\Option\Model\Group
+ */
+?>
+<div class="w-100 m-4">
+
+    <?
+    echo $this->pageBreadcrumbs()->setItems(
+        [
+            'Administrator' => $this->url('admin'),
+            'Options' => $this->url('admin', ['plugin' => 'options']),
+        ]
+    )->render();
+
+    ?>
+
+
+    <div class="p-2 w-100">
+        <div class="card">
+
+            <div class="card-block p-4">
+                <h4 class="card-title">Options
+                    <small>setting for website</small>
+                </h4>
+
+                <? foreach ($this->groups as $gr): ?>
+                    <h4 class="p-a-1">
+                        <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'conf', 'id' => $gr->getName()]) ?>"
+                           class="btn btn-primary col-8"><?= $gr->getDescription() ?></a>
+                        <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'editgroup', 'id' => $gr->getName()]) ?>"
+                           class="btn btn-secondary btn-sm pull-right">Edit</a>
+                    </h4>
+                <? endforeach ?>
+            </div>
+
+
+            <div class="card-footer text-muted">
+                <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'addgroup']) ?>"><i class="fa fa-plus"
+                                                                                                      aria-hidden="true"></i>
+                    <?= $this->translate('Add') ?>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="p-4 w-100">
+        <table class="table w-100">
+            <tr>
+                <th><?= $this->translate('Name') ?></th>
+                <th><?= $this->translate('Value') ?></th>
+                <th><?= $this->translate('Description') ?></th>
+            </tr>
+            <?
+            foreach ($listoption as $groupcontain) {
+                /**
+                 * @var $group \XT\Option\Model\Group
+                 * @var $item \XT\Option\Model\Option
+                 */
+                $group = $groupcontain['group'];
+                $items = $groupcontain['item'];
+                ?>
+                <tr>
+                    <td colspan="3"
+                        class="text-danger font-weight-bold bg-light"><?= $group->getName() . '  <small>' . $group->getDescription() . '</small>' ?></td>
+                </tr>
+                <?
+
+                foreach ($items as $item) {
+                    ?>
+                    <tr>
+                        <td><code><?= $item->getName() ?></code></td>
+                        <td>
+                            <small><?= $item->getValue() ?></small>
+                        </td>
+                        <td>
+                            <small><?= $item->getHint() ?><br><?= $item->getDescription() ?></small>
+                        </td>
+
+                    </tr>
+
+                    <?
+                }
+
+            }
+
+            ?>
+        </table>
+    </div>
+
+
+    <div class="w-100 p-4">
+        <h3>List Files .BAK (config)</h3>
+
+        <table class="table mt-1">
+            <? foreach ($listfile as $file): ?>
+                <tr>
+                    <td><?= $file['file'] ?></td>
+                    <td><?= $file['date'] ?></td>
+                    <td>
+                        <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'restorebackup'], ['query' => ['f' => $file['file']]]) ?>"
+                           class="btn btn-secondary btn-sm">Restore</a>
+
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </table>
+        <? if (count($listfile) > 0): ?>
+            <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'removeallbackup']) ?>"
+               class="btn btn-secondary btn-sm pull-right mb-1">Remove All backup</a>
+
+        <? endif; ?>
+    </div>
+</div>
+

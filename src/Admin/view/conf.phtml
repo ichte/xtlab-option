@@ -1,0 +1,35 @@
+<?
+/**
+ * @var $this PhpRenderer
+ * @var $group \XT\Option\Model\Group
+ * @var $op \XT\Option\Model\Option
+ */
+
+?>
+
+
+<div class="p-4 w-100">
+    <?
+    echo $this->pageBreadcrumbs()->setItems([
+        'Administrator' => $this->url('admin'),
+        'Options' => $this->url('admin', ['plugin' => 'options']),
+        $group->getName() => '#'
+
+    ])->renderRow();
+    ?>
+
+    <div class="card">
+        <div class="card-block p-2">
+            <form method="POST">
+                <? foreach ($this->options as $op): ?>
+                    <?= $this->partial('XT/option/option_temp', ['option' => $op]) ?>
+                <? endforeach ?>
+                <input type="submit" value="Save" class="btn btn-danger pull-right"/>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'addoption', 'id' => $group->getName()]) ?>"><?= '+ ' . $this->translate('Add') ?></a>
+
+        </div>
+    </div>
+</div>

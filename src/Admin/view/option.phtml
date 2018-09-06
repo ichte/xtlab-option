@@ -1,0 +1,43 @@
+<?
+/***
+ * @var $option XT\Option\Model\Option
+ */
+?>
+
+
+<div class="form-group row">
+    <label for="<?= $option->getName() ?>" class="col-sm-5 form-control-label text-right">
+        <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'editoption', 'id' => $option->getName()]) ?>"><?= $option->getName() ?></a>
+    </label>
+    <div class="col-sm-7">
+        <?
+        if ($option->getDescription() != '') echo "<span style=\"font-size:11px\">{$option->getDescription()}</span>";
+        switch ($option->getType()) {
+            case 'boolean':
+                if ($option->getValue())
+                    echo "<div class=\"checkbox\">
+                    <label>
+                        <input checked value=\"1\" type=\"radio\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">chọn
+                        <input value=\"0\" type=\"radio\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">không chọn
+                     </label>
+                   </div>";
+                else
+                    echo "<div class=\"checkbox\">
+                      <label>
+                        <input  value=\"1\" type=\"radio\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">chọn
+                        <input checked value=\"0\" type=\"radio\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">không chọn
+                     </label>
+                   </div>";
+                break;
+            case 'string':
+                echo "<textarea  type=\"text\" class=\"form-control\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">{$option->getValue()}</textarea>";
+                break;
+            default:
+                echo "<input value=\"{$option->getValue()}\"  type=\"text\" class=\"form-control\" id=\"{$option->getName()}\" name=\"{$option->getName()}\">";
+                break;
+        }
+
+        ?>
+    </div>
+
+</div>

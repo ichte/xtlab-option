@@ -1,0 +1,65 @@
+<?php
+/***
+ * @var $this PhpRenderer
+ * @var $group \XT\Option\Model\Group
+ * @var $option \XT\Option\Model\Option
+ * @var $form \XT\Option\Form\OptionForm
+ */
+
+$this->headTitle($this->translate('Add new option'));
+echo $this->pageBreadcrumbs()->setItems(
+    [
+        'Administrator' => $this->url('admin'),
+        'Options' => $this->url('admin', ['plugin' => 'options']),
+        $group->getName() => $this->url('admin', ['plugin' => 'options', 'action' => 'conf', 'id' => $group->getName()]),
+        '+ add' => 'Add'
+    ]
+)->render();
+
+?>
+
+<div class="p-4 w-100">
+    <? if (isset($option)): ?>
+        <h3>
+            <small>Edit option
+        </h3>
+    <? else: ?>
+        <h3>
+            <small>Add option in group</small><?= $group->getName() ?></h3>
+    <? endif; ?>
+
+    <?
+    $form->setAttribute('class', 'form');
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    ?>
+    <fieldset class="form-group">
+        <label>Name</label>
+        <?= $this->formRow($form->get('name')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Hint</label>
+        <?= $this->formRow($form->get('hint')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Type</label>
+        <?= $this->formRow($form->get('type')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Descripiton</label>
+        <?= $this->formRow($form->get('description')) ?>
+    </fieldset>
+    <?= $this->formHidden($form->get('group_id')) ?>
+    <?= $this->formHidden($form->get($form->getNameCsrf())) ?>
+    <?= $this->formelementerrors($form->get($form->getNameCsrf())) ?>
+
+    <fieldset class="form-group">
+        <?= $this->formSubmit($form->get('submit')) ?>
+        <? if (isset($option)): ?>
+            <a
+                    href="<?= $this->url('admin', ['act' => 'deleteoption', 'plugin' => 'options', 'id' => $option->getName()]) ?>"
+                    class="btn btn-danger">Xóa</a>
+        <? endif ?>
+    </fieldset>
+    <?= $this->form()->closeTag() ?>
+</div>

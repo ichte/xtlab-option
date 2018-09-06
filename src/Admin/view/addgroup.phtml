@@ -1,0 +1,47 @@
+<?php
+/***
+ * @var $this PhpRenderer
+ * @var $form \XT\Option\Form\GroupoptionForm
+ * @var $option \XT\Option\Model\Option
+ */
+$this->headTitle($this->translate('Add new group option'));
+?>
+<?
+echo $this->pageBreadcrumbs()->setItems(
+    [
+        'Administrator' => $this->url('admin'),
+        'Options' => $this->url('admin', ['plugin' => 'options']),
+        'Add' => 'Add'
+    ]
+)->render();
+
+?>
+<div class="p-4">
+    <h1><?= $this->translate('Add new group option') ?></h1>
+    <?
+
+    $form->setAttribute('action', $this->url('admin', ['plugin' => 'options', 'act' => 'addgroup']));
+    $form->setAttribute('class', 'form');
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+
+    ?>
+
+
+    <fieldset class="form-group">
+
+        <label><?= $this->translate('Name') ?></label>
+        <?= $this->formRow($form->get('name')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <label><?= $this->translate('Description') ?></label>
+        <?= $this->formRow($form->get('description')) ?>
+    </fieldset>
+    <fieldset class="form-group">
+        <?= $this->formSubmit($form->get('submit')) ?>
+        <?= $this->formelementerrors($form->get($form->getNameCsrf())) ?>
+    </fieldset>
+    <?= $this->formhidden($form->get($form->getNameCsrf())) ?>
+    <?= $this->form()->closeTag() ?>
+</div>
