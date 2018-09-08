@@ -6,16 +6,14 @@
  */
 $this->headTitle($this->translate('Add new group option'));
 ?>
-<?
-echo $this->pageBreadcrumbs()->setItems(
+<?=$this->partial('dropdown_breadcrumbs',
     [
-        'Administrator' => $this->url('admin'),
-        'Options' => $this->url('admin', ['plugin' => 'options']),
-        'Add' => 'Add'
-    ]
-)->render();
+        'listplugins' => $listplugins,
+        'currentNameplugin' => $currentNameplugin,
+        'listactions' => $listactions,
+        'currentNameaction' => $currentNameaction
+    ])?>
 
-?>
 <div class="p-4">
     <h1><?= $this->translate('Add new group option') ?></h1>
     <?

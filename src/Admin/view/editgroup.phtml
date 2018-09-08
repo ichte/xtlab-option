@@ -5,16 +5,13 @@
  */
 $this->headTitle($this->translate('Update option group'));
 ?>
-<?php
-echo $this->pageBreadcrumbs()->setItems(
+<?=$this->partial('dropdown_breadcrumbs',
     [
-        'Administrator' => $this->url('admin'),
-        'Options' => $this->url('admin', ['plugin' => 'options']),
-        'Add' => 'Add'
-    ]
-)->render();
-
-?>
+        'listplugins' => $listplugins,
+        'currentNameplugin' => $currentNameplugin,
+        'listactions' => $listactions,
+        'currentNameaction' => $currentNameaction
+    ])?>
 <div class="p-4">
     <h1><?= $this->translate('Update option group') ?></h1>
     <?

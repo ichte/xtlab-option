@@ -7,16 +7,15 @@
  */
 
 $this->headTitle($this->translate('Add new option'));
-echo $this->pageBreadcrumbs()->setItems(
-    [
-        'Administrator' => $this->url('admin'),
-        'Options' => $this->url('admin', ['plugin' => 'options']),
-        $group->getName() => $this->url('admin', ['plugin' => 'options', 'action' => 'conf', 'id' => $group->getName()]),
-        '+ add' => 'Add'
-    ]
-)->render();
 
 ?>
+<?=$this->partial('dropdown_breadcrumbs',
+    [
+        'listplugins' => $listplugins,
+        'currentNameplugin' => $currentNameplugin,
+        'listactions' => $listactions,
+        'currentNameaction' => $currentNameaction
+    ])?>
 
 <div class="p-4 w-100">
     <? if (isset($option)): ?>

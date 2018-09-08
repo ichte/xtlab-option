@@ -6,15 +6,13 @@
 ?>
 <div class="w-100 m-4">
 
-    <?
-    echo $this->pageBreadcrumbs()->setItems(
+    <?=$this->partial('dropdown_breadcrumbs',
         [
-            'Administrator' => $this->url('admin'),
-            'Options' => $this->url('admin', ['plugin' => 'options']),
-        ]
-    )->render();
-
-    ?>
+            'listplugins' => $listplugins,
+            'currentNameplugin' => $currentNameplugin,
+            'listactions' => $listactions,
+            'currentNameaction' => $currentNameaction
+        ])?>
 
 
     <div class="p-2 w-100">
