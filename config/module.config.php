@@ -14,11 +14,6 @@ return [
 
     ],
 
-    'view_manager' => [
-        'template_map' => [
-            'XT/option/option_temp' => __DIR__ . '/../src/Admin/view/option.phtml',
-        ],
-    ],
 
 
 ];

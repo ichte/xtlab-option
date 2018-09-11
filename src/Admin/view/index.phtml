@@ -4,7 +4,7 @@
  * @var $gr \XT\Option\Model\Group
  */
 ?>
-<div class="w-100 m-4">
+<div class="w-100 my-4">
 
     <?=$this->partial('dropdown_breadcrumbs',
         [
@@ -24,19 +24,18 @@
                 </h4>
 
                 <? foreach ($this->groups as $gr): ?>
-                    <h4 class="p-a-1">
+                    <div class="m-1">
                         <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'conf', 'id' => $gr->getName()]) ?>"
                            class="btn btn-primary col-8"><?= $gr->getDescription() ?></a>
                         <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'editgroup', 'id' => $gr->getName()]) ?>"
-                           class="btn btn-secondary btn-sm pull-right">Edit</a>
-                    </h4>
+                           class="pull-right text-muted">Edit</a>
+                    </div>
                 <? endforeach ?>
             </div>
 
 
             <div class="card-footer text-muted">
-                <a href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'addgroup']) ?>"><i class="fa fa-plus"
-                                                                                                      aria-hidden="true"></i>
+                <a class="btn btn-danger" href="<?= $this->url('admin', ['plugin' => 'options', 'act' => 'addgroup']) ?>"><i class="fa fa-plus"  aria-hidden="true"></i>
                     <?= $this->translate('Add') ?>
                 </a>
             </div>
@@ -86,8 +85,6 @@
             ?>
         </table>
     </div>
-
-
     <div class="w-100 p-4">
         <h3>List Files .BAK (config)</h3>
 

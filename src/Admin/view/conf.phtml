@@ -21,7 +21,7 @@
         <div class="card-block p-2">
             <form method="POST">
                 <? foreach ($this->options as $op): ?>
-                    <?= $this->partial('XT/option/option_temp', ['option' => $op]) ?>
+                    <?= $this->partial('admin/option/option.phtml', ['option' => $op]) ?>
                 <? endforeach ?>
                 <input type="submit" value="Save" class="btn btn-danger pull-right"/>
             </form>

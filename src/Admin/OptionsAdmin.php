@@ -52,24 +52,29 @@ class OptionsAdmin extends AbstractPlugin
 
         $ar['addgroup'] = [
             'name' => 'AddGroup',
-            'description' => 'Add new group'
+            'description' => 'Add new group',
+            'index' => true
         ];
 
         $ar['conf'] = [
             'name' => 'ListOptions',
-            'description' => 'Optins in group'
+            'description' => 'Optins in group',
+            'index' => true
         ];
         $ar['addoption'] = [
             'name' => '+ add',
-            'description' => 'Add new option in group'
+            'description' => 'Add new option in group',
+            'index' => true
         ];
         $ar['editgroup'] = [
             'name' => '+ edit group',
-            'description' => 'Edit  group'
+            'description' => 'Edit  group',
+            'index' => true
         ];
         $ar['editoption'] = [
             'name' => '+ edit option',
-            'description' => 'Edit option'
+            'description' => 'Edit option',
+            'index' => true
         ];
 
 
